@@ -5,6 +5,7 @@
     PasswordField,
     LinkButton,
     Button,
+    Tooltip,
   } from '../../components';
 </script>
 
@@ -60,6 +61,7 @@
           label='Correo electronico'
           value=''
           placeholder='Escriba su correo electronico'
+          info='necesitamos tu correo'
         />
         
         <br/>

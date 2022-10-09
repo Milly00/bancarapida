@@ -8,6 +8,20 @@
       >
         {{ label }}
       </label>
+
+      
+      <!--
+        - TODO:
+        - añadir un icono de info 
+      -->
+
+      <Tooltip
+        :text='info'
+      >
+        <p>
+          info
+        </p>
+      </Tooltip>
     </div>
 
     <input 
@@ -21,9 +35,13 @@
 </template>
 
 <script>
+import Tooltip from '../components/Tooltip.vue'
 
 export default {
   name: 'TextField',
+  components: {
+    Tooltip,
+  },
   props: {
     label: {
       type: String,
@@ -34,6 +52,10 @@ export default {
       required: true,
     },
     placeholder: {
+      type: String,
+      required: false,
+    },
+    info: {
       type: String,
       required: false,
     },
