@@ -1,3 +1,6 @@
 <template>
-  <h3 class='text-4xl'>🏦</h3>
+  <img 
+    class='w-24'
+    src='../assets/logo.png' 
+  />
 </template>
