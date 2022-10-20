@@ -1,0 +1,1 @@
+export {default as ExternalTransactionView} from './External-transaction.vue'
