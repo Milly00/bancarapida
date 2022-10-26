@@ -21,7 +21,6 @@ const router = createRouter({
       name: 'external-transaction',
       component: ExternalTransactionView,
     },
-  ],
+  ]
 })
-
-export default router
+export default router;
