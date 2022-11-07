@@ -1,8 +1,11 @@
 <script setup>
-import { Button } from '../../components/ui/';
+import { Button,Navbar } from '../../components/ui/';
+
 </script>
 
 <template>
+  <Navbar></Navbar>
+
   <div class="bg-gray-100 w-full">
     <section class="bg-blue-700 h-56 relative"></section>
     <div

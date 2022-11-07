@@ -32,4 +32,5 @@
     </div>
   </div>
 </nav>
+  <nav class="w-full"></nav>
 </template>
