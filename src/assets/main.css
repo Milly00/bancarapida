@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './styles/_navbar.css';
+.navbrand {
+  width: 50px;
+}
+
+.a_nav {
+  display: flex;
+}
+
+.a_nav p {
+  font-weight: 800;
+  margin: auto 1rem;
+}
+
+.bg-white {
+}
+
+.card-transf {
+  top: -150px;
+}

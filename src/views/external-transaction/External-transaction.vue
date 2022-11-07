@@ -6,16 +6,14 @@ import { Button } from '../../components/ui/';
   <div class="bg-gray-100 w-full">
     <section class="bg-blue-700 h-56 relative"></section>
     <div
-      class="w-4/12	 absolute top-20 left-0 right-0 card bg-white bg-no-repeat bg-center rounded-md shadow-lg w-1/2 m-auto px-10 py-10"
+      class="w-4/12 card-transf absolute top-20 left-0 right-0 card bg-white bg-no-repeat bg-center rounded-md shadow-lg w-1/2 m-auto px-10 py-10"
     >
       <h1 class="text-slate-800 font-semibold text-lg">Transferir dinero</h1>
       <p class="text-gray-500">Ingresa los datos requeridos</p>
       <div class="row w-auto mt-2 ">
         <form @submit.prevent="sendForm()">
           <div class="form-floating mt-4">
-            <label class="text-sm font-sans" for="floatingInput"
-              >Nombre de quien recibe</label
-            >
+            
 
             <input
               type="text"
@@ -26,16 +24,18 @@ import { Button } from '../../components/ui/';
               autocomplete="off"
             />
           </div>
+          <label class="text-sm font-sans" for="floatingInput"
+              >Nombre de quien recibe</label
+            >
           <span
             v-if="dataValida && v$.formData.nombre.$invalid"
             class="text-danger"
           >
             Ingresa mínimo un nombre y un apellido
           </span>
+          
           <div class="form-floating mt-4">
-            <label class="text-sm font-sans" for="floatingSelect"
-              >Tipo de documento</label
-            >
+            
             <select
               v-model="formData.tipoDoc"
               class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
@@ -47,6 +47,9 @@ import { Button } from '../../components/ui/';
               <option value="cedulaext">Cédula de extranjeria</option>
             </select>
           </div>
+          <label class="text-sm font-sans" for="floatingSelect"
+              >Tipo de documento</label
+            >
           <span
             v-if="dataValida && v$.formData.tipoDoc.$invalid"
             class="text-danger"
@@ -54,9 +57,7 @@ import { Button } from '../../components/ui/';
             *Seleccione su tipo de documento
           </span>
           <div class="form-floating mt-4">
-            <label class="text-sm font-sans" for="floatingInput"
-              >Nro. de documento</label
-            >
+           
             <input
               type="number"
               v-model="formData.numDoc"
@@ -66,6 +67,9 @@ import { Button } from '../../components/ui/';
               autocomplete="off"
             />
           </div>
+          <label class="text-sm font-sans" for="floatingInput"
+              >Nro. de documento</label
+            >
           <span
             v-if="dataValida && v$.formData.numDoc.$invalid"
             class="text-danger"
@@ -73,7 +77,6 @@ import { Button } from '../../components/ui/';
             *Ingrese un número de documento válido
           </span>
           <div class="form-floating mt-4">
-            <label class="text-sm font-sans" for="floatingInput">Banco</label>
             <input
               type="text"
               v-model="formData.banco"
@@ -84,10 +87,10 @@ import { Button } from '../../components/ui/';
               disabled
             />
           </div>
+          <label class="text-sm font-sans" for="floatingInput">Banco</label>
+
           <div class="form-floating mt-4">
-            <label class="text-sm font-sans" for="floatingSelect"
-              >Tipo de cuenta</label
-            >
+            
             <select
               v-model="formData.tipoCuenta"
               class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
@@ -98,6 +101,9 @@ import { Button } from '../../components/ui/';
               <option value="corriente">Cuenta corriente</option>
             </select>
           </div>
+          <label class="text-sm font-sans" for="floatingSelect"
+              >Tipo de cuenta</label
+            >
           <span
             v-if="dataValida && v$.formData.tipoCuenta.$invalid"
             class="text-danger"
@@ -105,9 +111,7 @@ import { Button } from '../../components/ui/';
             *Seleccione su tipo de cuenta
           </span>
           <div class="form-floating mt-4">
-            <label class="text-sm font-sans" for="floatingInput"
-              >Nro. de cuenta</label
-            >
+            
             <input
               type="number"
               v-model="formData.numCuenta"
@@ -117,6 +121,9 @@ import { Button } from '../../components/ui/';
               autocomplete="off"
             />
           </div>
+          <label class="text-sm font-sans" for="floatingInput"
+              >Nro. de cuenta</label
+            >
           <span
             v-if="dataValida && v$.formData.numCuenta.$invalid"
             class="text-danger"
@@ -124,9 +131,7 @@ import { Button } from '../../components/ui/';
             *Ingrese su número de cuenta
           </span>
           <div class="form-floating mt-4">
-            <label class="text-sm font-sans" for="floatingInput"
-              >Monto a enviar</label
-            >
+            
             <input
               type="number"
               v-model="formData.monto"
@@ -136,6 +141,9 @@ import { Button } from '../../components/ui/';
               autocomplete="off"
             />
           </div>
+          <label class="text-sm font-sans" for="floatingInput"
+              >Monto a enviar</label
+            >
           <template v-if="dataValida && v$.formData.monto.$invalid">
             <div class="text-danger">
               *Ingrese un monto igual o mayor a 10000
