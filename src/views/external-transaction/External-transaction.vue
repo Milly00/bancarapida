@@ -1,6 +1,5 @@
 <script setup>
-import { Button,Navbar } from '../../components/ui/';
-
+import { Button, Navbar } from '../../components/ui/'
 </script>
 
 <template>
@@ -13,14 +12,90 @@ import { Button,Navbar } from '../../components/ui/';
     >
       <h1 class="text-slate-800 font-semibold text-lg">Transferir dinero</h1>
       <p class="text-gray-500">Ingresa los datos requeridos</p>
-      <div class="row w-auto mt-2 ">
+      <div class="row w-auto mt-2">
         <form @submit.prevent="sendForm()">
           <div class="form-floating mt-4">
-            
-
+            <!-- Según el número de cuenta se tiene que buscar el idAccount-->
+            <input
+              type="number"
+              v-model="formData.EANumber"
+              class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
+              id="floatingInput"
+              placeholder="1234567"
+              autocomplete="off"
+            />
+          </div>
+          <label class="text-sm font-sans" for="floatingInput"
+            >Nro. de cuenta</label
+          >
+          <span
+            v-if="dataValida && v$.formData.numCuenta.$invalid"
+            class="text-danger"
+          >
+            *Ingrese su número de cuenta
+          </span>
+          <div class="form-floating mt-4">
+            <select
+              v-model="formData.transactionType"
+              class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
+              id="floatingSelect"
+              aria-label="Floating label select example"
+            >
+              <option value="externa">Externa</option>
+              <option value="interna">Interna</option>
+            </select>
+          </div>
+          <label class="text-sm font-sans" for="floatingSelect"
+            >Tipo de transacción</label
+          >
+          <span
+            v-if="dataValida && v$.formData.transactionType.$invalid"
+            class="text-danger"
+          >
+            *Seleccione un tipo de transacción
+          </span>
+          <div class="form-floating mt-4">
+            <select
+              v-model="formData.EAType"
+              class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
+              id="floatingSelect"
+              aria-label="Floating label select example"
+            >
+              <option value="ahorro">Ahorro</option>
+              <option value="corriente">Corriente</option>
+            </select>
+          </div>
+          <label class="text-sm font-sans" for="floatingSelect"
+            >Tipo de cuenta</label
+          >
+          <span
+            v-if="dataValida && v$.formData.EAType.$invalid"
+            class="text-danger"
+          >
+            *Seleccione un tipo de cuenta
+          </span>
+          <div class="form-floating mt-4">
+            <input
+              type="number"
+              v-model="formData.amount"
+              class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
+              id="floatingInput"
+              placeholder="1234567"
+              autocomplete="off"
+            />
+          </div>
+          <label class="text-sm font-sans" for="floatingInput"
+            >Monto a enviar</label
+          >
+          <template v-if="dataValida && v$.formData.amount.$invalid">
+            <div class="text-danger">
+              *Ingrese un monto igual o mayor a 10000
+            </div>
+          </template>
+          <div class="form-floating mt-4">
             <input
               type="text"
-              v-model="formData.nombre"
+              v-model="formData.EAOwnerName"
               class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
               id="floatingInput"
               placeholder="Nombres"
@@ -28,19 +103,18 @@ import { Button,Navbar } from '../../components/ui/';
             />
           </div>
           <label class="text-sm font-sans" for="floatingInput"
-              >Nombre de quien recibe</label
-            >
+            >Nombre de quien recibe</label
+          >
           <span
-            v-if="dataValida && v$.formData.nombre.$invalid"
+            v-if="dataValida && v$.formData.EAOwnerName.$invalid"
             class="text-danger"
           >
             Ingresa mínimo un nombre y un apellido
           </span>
-          
+
           <div class="form-floating mt-4">
-            
             <select
-              v-model="formData.tipoDoc"
+              v-model="formData.EAOwnerTypeId"
               class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
               id="floatingSelect"
               aria-label="Floating label select example"
@@ -51,19 +125,18 @@ import { Button,Navbar } from '../../components/ui/';
             </select>
           </div>
           <label class="text-sm font-sans" for="floatingSelect"
-              >Tipo de documento</label
-            >
+            >Tipo de documento</label
+          >
           <span
-            v-if="dataValida && v$.formData.tipoDoc.$invalid"
+            v-if="dataValida && v$.formData.EAOwnerTypeId.$invalid"
             class="text-danger"
           >
             *Seleccione su tipo de documento
           </span>
           <div class="form-floating mt-4">
-           
             <input
               type="number"
-              v-model="formData.numDoc"
+              v-model="formData.EAOwnerId"
               class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
               id="floatingInput"
               placeholder="1234567"
@@ -71,10 +144,10 @@ import { Button,Navbar } from '../../components/ui/';
             />
           </div>
           <label class="text-sm font-sans" for="floatingInput"
-              >Nro. de documento</label
-            >
+            >Nro. de documento</label
+          >
           <span
-            v-if="dataValida && v$.formData.numDoc.$invalid"
+            v-if="dataValida && v$.formData.EAOwnerId.$invalid"
             class="text-danger"
           >
             *Ingrese un número de documento válido
@@ -82,7 +155,7 @@ import { Button,Navbar } from '../../components/ui/';
           <div class="form-floating mt-4">
             <input
               type="text"
-              v-model="formData.banco"
+              v-model="formData.bankName"
               class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
               id="floatingInput"
               placeholder="Bancarapida"
@@ -91,81 +164,30 @@ import { Button,Navbar } from '../../components/ui/';
             />
           </div>
           <label class="text-sm font-sans" for="floatingInput">Banco</label>
-
           <div class="form-floating mt-4">
-            
-            <select
-              v-model="formData.tipoCuenta"
-              class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
-              id="floatingSelect"
-              aria-label="Floating label select example"
-            >
-              <option value="ahorros">Cuenta de ahorros</option>
-              <option value="corriente">Cuenta corriente</option>
-            </select>
-          </div>
-          <label class="text-sm font-sans" for="floatingSelect"
-              >Tipo de cuenta</label
-            >
-          <span
-            v-if="dataValida && v$.formData.tipoCuenta.$invalid"
-            class="text-danger"
-          >
-            *Seleccione su tipo de cuenta
-          </span>
-          <div class="form-floating mt-4">
-            
             <input
-              type="number"
-              v-model="formData.numCuenta"
+              type="text"
+              v-model="formData.description"
               class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
               id="floatingInput"
-              placeholder="1234567"
+              placeholder="Escribe una descripción"
               autocomplete="off"
             />
           </div>
-          <label class="text-sm font-sans" for="floatingInput"
-              >Nro. de cuenta</label
-            >
-          <span
-            v-if="dataValida && v$.formData.numCuenta.$invalid"
-            class="text-danger"
-          >
-            *Ingrese su número de cuenta
-          </span>
-          <div class="form-floating mt-4">
-            
-            <input
-              type="number"
-              v-model="formData.monto"
-              class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
-              id="floatingInput"
-              placeholder="1234567"
-              autocomplete="off"
-            />
-          </div>
-          <label class="text-sm font-sans" for="floatingInput"
-              >Monto a enviar</label
-            >
-          <template v-if="dataValida && v$.formData.monto.$invalid">
-            <div class="text-danger">
-              *Ingrese un monto igual o mayor a 10000
-            </div>
-          </template>
+          <label class="text-sm font-sans" for="floatingInput">
+            Descripción
+          </label>
           <template v-if="dataValida && v$.formData.$invalid">
             <div class="h5 text-danger my-4">
               *Todos los campos son requeridos!
             </div>
           </template>
-          
+
           <div class="row mt-2">
-        <Button type="submit" variant="primary">Transferir</Button>
-      </div>
+            <Button type="submit" variant="primary">Transferir</Button>
+          </div>
         </form>
-        
       </div>
-      
-      
     </div>
   </div>
 </template>
@@ -181,13 +203,17 @@ export default {
       dataValida: false,
       v$: useVuelidate(),
       formData: {
-        nombre: '',
-        tipoDoc: '',
-        numDoc: '',
-        banco: 'Bancarapida',
-        tipoCuenta: '',
-        numCuenta: '',
-        monto: '',
+        EAOwnerName: '',
+        idAccount: '',
+        EAOwnerTypeId: '',
+        EAOwnerId: '',
+        bankName: 'Bancarapida',
+        EANumber: '',
+        EAType: '',
+        transactionType: '',
+        amount: '',
+        status: '',
+        description: '',
       },
     }
   },
@@ -200,17 +226,23 @@ export default {
       }
       console.log('Enviado!!', this.formData)
     },
+    searchIdUser() {
+      this.formData.idAccount
+    },
   },
   validations() {
     return {
       formData: {
-        nombre: { required, minLength: minLength(6) },
-        tipoDoc: { required },
-        numDoc: { required, minLength: minLength(7) },
-        banco: { required },
-        tipoCuenta: { required },
-        numCuenta: { required, minLength: minLength(7) },
-        monto: { required, minLength: minLength(5) },
+        EAOwnerName: { required, minLength: minLength(6) },
+        EAOwnerTypeId: { required },
+        EAOwnerId: { required, minLength: minLength(7) },
+        bankName: { required },
+        idAccount: { required, minLength: minLength(7) },
+        amount: { required, minLength: minLength(5) },
+        EANumber: { required, minLength: minLength(7) },
+        EAType: { required, minLength: minLength(7) },
+        transactionType: { required },
+        description: { minLength: minLength(5) },
       },
     }
   },

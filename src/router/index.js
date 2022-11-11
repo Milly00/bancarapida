@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import { CustomerDashboardView } from '../views/customer'
 import { ExternalTransactionView } from '../views/external-transaction'
+import { ListExternalTransactionView } from '../views/external-transaction'
 import { AuthView } from '../auth'
 
 const router = createRouter({
@@ -10,7 +10,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: CustomerDashboardView,
     },
     {
       path: '/customer',
@@ -21,6 +21,11 @@ const router = createRouter({
       path: '/external-transaction',
       name: 'external-transaction',
       component: ExternalTransactionView,
+    },
+    {
+      path: '/list-external-transaction',
+      name: 'list-external-transaction',
+      component: ListExternalTransactionView,
     },
     {
       path: '/auth/login',
