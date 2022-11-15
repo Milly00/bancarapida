@@ -8,13 +8,18 @@ import {
   Tooltip,
 } from '../../components'
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { api } from '../../main'
 
 let form = ref({ email: '', password: '' })
 
 async function login() {
-  let response = await api.instance.post('/login', { body: form.value })
-  console.log(response)
+  try {
+    let response = await api.instance.post('/login', { body: form.value })
+    console.log(response)
+  } catch (e) {
+    console.log({ e })
+  }
 }
 </script>
 
@@ -77,7 +82,9 @@ async function login() {
 
       <div class="text-center mt-4">
         ¿No tienes una cuenta?
-        <LinkButton content="Registrarme" />
+        <RouterLink class="text-primary w-fit" to="/auth/register"
+          >Registrarme</RouterLink
+        >
       </div>
     </section>
   </article>
