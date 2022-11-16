@@ -1,12 +1,12 @@
 <script setup>
 import {
-  Logo,
   TextField,
   PasswordField,
   LinkButton,
   Button,
   Tooltip,
 } from '../../components'
+import { TheLogo } from '@/components/ui'
 import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { api } from '../../main'
@@ -49,7 +49,7 @@ async function login() {
       </div>
     </section>
     <section class="w-1/2 h-screen px-32 flex flex-col justify-center">
-      <Logo />
+      <TheLogo class="w-24 h-24" />
       <h2 class="font-semibold text-4xl my-5">Bienvenido</h2>
       <p class="mb-6">Inicie sesión para acceder a su cuenta.</p>
 
