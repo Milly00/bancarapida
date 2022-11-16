@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import axios from 'axios'
 
 export const store = reactive({
   username: 'flipper',
@@ -26,4 +27,10 @@ export const store = reactive({
         status: ['Aprobada', 'Rechazada'][Math.round(Math.random())],
       })),
   ],
+  /* Methods */
+  getExtTransactions() {
+    return axios.get('http://localhost:8000/api/externalTransAll').then(res => {
+      this.latestMovements = res;
+    })
+  }
 })

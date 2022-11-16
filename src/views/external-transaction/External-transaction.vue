@@ -73,7 +73,6 @@ import { Button } from '../../components/ui/';
             *Ingrese un número de documento válido
           </span>
           <div class="form-floating mt-4">
-            <label class="text-sm font-sans" for="floatingInput">Banco</label>
             <input
               type="text"
               v-model="formData.banco"
@@ -162,6 +161,7 @@ import { Button } from '../../components/ui/';
 //import {ref} from 'vue';
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength } from '@vuelidate/validators'
+import axios from 'axios'
 
 export default {
   name: 'SendVue',
@@ -187,7 +187,36 @@ export default {
         this.dataValida = true
         return false
       }
-      console.log('Enviado!!', this.formData)
+      
+      let body = {
+        /* idAccount: this.idAccount,
+        EANumber: this.formData.numCuenta,
+        transactionType: 'externa',
+        EAType: this.formData.tipoCuenta,
+        amount: this.formData.monto,
+        date: '2022-11-11',
+        status: '?',
+        EAOwnerName: this.formData.nombre,
+        EAOwnerId: this.formData.numDoc,
+        EAOwnerIdType: this.formData.tipoDoc,
+        description: this.formData.descripcion,
+        bankName: this.formData.banco, */
+
+        ea_number: this.formData.numCuenta,
+        transaction_type: "Transaccion Externa",
+        ea_type: this.formData.tipoCuenta,
+        amount: this.formData.monto,
+        date: "2022-11-16",
+        eao_name: this.formData.nombre,
+        eao_id: this.formData.numDoc,
+        eao_idtype: this.formData.tipoDoc,
+        description: this.formData.descripcion,
+        bank_name: this.formData.banco
+
+      }
+      axios.post('http://localhost:8000/api/internalTransCreateExternal', body).then( res => {
+        console.log(res);
+      });
     },
   },
   validations() {
