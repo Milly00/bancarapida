@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import axios from 'axios'
 
 export const store = reactive({
   username: 'flipper',
@@ -48,4 +49,5 @@ export const store = reactive({
         status: ['Aprobada', 'Rechazada'][Math.round(Math.random())],
       })),
   ]
+  
 })

@@ -1,6 +1,7 @@
 <script setup>
 import { store } from '@/store/userStore'
 import { StatusBadge, Table, TableItem, TableItemCell } from '@/components/ui'
+
 </script>
 
 <template>
