@@ -12,6 +12,9 @@ import { RouterLink, useRouter } from 'vue-router'
 import { IdentityTypes, Genders } from '../../constants'
 import { api } from '../../main'
 import { useToast } from 'vue-toastification'
+import { useIsAuth } from '@/composables'
+
+useIsAuth()
 
 let form = ref({})
 
