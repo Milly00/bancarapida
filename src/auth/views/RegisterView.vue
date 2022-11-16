@@ -8,16 +8,19 @@ import {
   Tooltip,
 } from '../../components'
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { IdentityTypes, Genders } from '../../constants'
 import { api } from '../../main'
 
 let form = ref({})
 
+const router = useRouter()
+
 async function register() {
   try {
-    let response = await api.instance.post('/signout', { body: form.value })
-    console.log({ response })
+    let response = await api.instance.post('/signout', form.value)
+    localStorage.setItem('user', response.data.token)
+    router.push('/customer')
   } catch (e) {
     console.log({ e })
   }
@@ -31,7 +34,7 @@ async function register() {
     >
       <img src="../../assets/auth_view_img.png" class="w-[500px]" />
 
-      <div class="w-96 text-center">
+      <div class="w-96 text-center text-white">
         <h4 class="text-3xl font-bold mt-12">
           Reciba pagos de cualquier sistema bancario
         </h4>
