@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PathNotFound from '../views/PathNotFound.vue'
+import Logout from '../views/customer/Logout.vue'
 import { CustomerDashboardView } from '../views/customer'
 import { AuthView, RegisterView } from '../auth'
 
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/auth/register',
       name: 'register',
       component: RegisterView,
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: Logout,
     },
     { path: '/:pathMatch(.*)*', component: PathNotFound },
   ],
