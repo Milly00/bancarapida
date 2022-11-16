@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import PathNotFound from '../views/PathNotFound.vue'
 import { CustomerDashboardView } from '../views/customer'
 import { AuthView, RegisterView } from '../auth'
 
@@ -26,6 +27,7 @@ const router = createRouter({
       name: 'register',
       component: RegisterView,
     },
+    { path: '/:pathMatch(.*)*', component: PathNotFound },
   ],
 })
 
