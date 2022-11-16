@@ -10,10 +10,13 @@ import {
 import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { api } from '../../main'
+import { useToast } from 'vue-toastification'
 
 let form = ref({ user_name: '', password: '' })
 
 const router = useRouter()
+
+const toast = useToast()
 
 async function login() {
   try {
@@ -21,7 +24,7 @@ async function login() {
     localStorage.setItem('user', response.data.token)
     router.push('/customer')
   } catch (e) {
-    console.log({ e })
+    toast.error(e.response.data.detail)
   }
 }
 </script>

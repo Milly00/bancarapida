@@ -11,10 +11,13 @@ import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { IdentityTypes, Genders } from '../../constants'
 import { api } from '../../main'
+import { useToast } from 'vue-toastification'
 
 let form = ref({})
 
 const router = useRouter()
+
+const toast = useToast()
 
 async function register() {
   try {
@@ -22,7 +25,7 @@ async function register() {
     localStorage.setItem('user', response.data.token)
     router.push('/customer')
   } catch (e) {
-    console.log({ e })
+    toast.error(e.response.data.detail)
   }
 }
 </script>
