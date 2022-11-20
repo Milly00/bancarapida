@@ -4,6 +4,8 @@
     "jsx": "preserve",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": [    "vue-sweetalert2"
+  ]
   }
 }
