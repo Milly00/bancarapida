@@ -1,20 +1,34 @@
 <script setup>
 import {
-  Logo,
   TextField,
   PasswordField,
   LinkButton,
   Button,
   Tooltip,
 } from '../../components'
+import { TheLogo } from '@/components/ui'
 import { ref } from 'vue'
+import { RouterLink, useRouter } from 'vue-router'
 import { api } from '../../main'
+import { useToast } from 'vue-toastification'
+import { useIsAuth } from '@/composables'
 
-let form = ref({ email: '', password: '' })
+useIsAuth()
+
+let form = ref({ user_name: '', password: '' })
+
+const router = useRouter()
+
+const toast = useToast()
 
 async function login() {
-  let response = await api.instance.post('/login', { body: form.value })
-  console.log(response)
+  try {
+    let response = await api.instance.post('/login', form.value)
+    localStorage.setItem('user', response.data.token)
+    router.push('/customer')
+  } catch (e) {
+    toast.error(e.response.data.detail)
+  }
 }
 </script>
 
@@ -25,7 +39,7 @@ async function login() {
     >
       <img src="../../assets/auth_view_img.png" class="w-[500px]" />
 
-      <div class="w-96 text-center">
+      <div class="w-96 text-center text-white">
         <h4 class="text-3xl font-bold mt-12">
           Reciba pagos de cualquier sistema bancario
         </h4>
@@ -35,7 +49,7 @@ async function login() {
       </div>
     </section>
     <section class="w-1/2 h-screen px-32 flex flex-col justify-center">
-      <Logo />
+      <TheLogo class="w-24 h-24" />
       <h2 class="font-semibold text-4xl my-5">Bienvenido</h2>
       <p class="mb-6">Inicie sesión para acceder a su cuenta.</p>
 
@@ -47,11 +61,13 @@ async function login() {
       -->
 
       <div class="flex flex-col justify-center">
-        <label class="text-gray-600 text-lg mb-2" for="email">Email</label>
+        <label class="text-gray-600 text-lg mb-2" for="user_name"
+          >Nombre de usuario</label
+        >
         <input
           class="bg-slate-100 px-4 py-2 rounded-md"
-          type="email"
-          v-model="form.email"
+          type="text"
+          v-model="form.user_name"
         />
 
         <br />
@@ -65,8 +81,6 @@ async function login() {
           v-model="form.password"
         />
 
-        <LinkButton class="mt-4" content="¿Has olvidado tu contraseña?" />
-
         <button
           class="bg-primary text-white text-xl py-3 rounded-md mt-12"
           @click="login"
@@ -77,7 +91,9 @@ async function login() {
 
       <div class="text-center mt-4">
         ¿No tienes una cuenta?
-        <LinkButton content="Registrarme" />
+        <RouterLink class="text-primary w-fit" to="/auth/register"
+          >Registrarme</RouterLink
+        >
       </div>
     </section>
   </article>
