@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PathNotFound from '../views/PathNotFound.vue'
 import Logout from '../views/customer/Logout.vue'
-import { ExternalTransactionView } from '../views/external-transaction'
 import ConsolidadoComponent from "../views/customer/consolidado.views.vue"
 import { CustomerDashboardView } from '../views/customer'
 import { DetailExternalTransactionView, ExternalTransactionView } from '../views/external-transaction'
