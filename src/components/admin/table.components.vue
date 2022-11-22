@@ -1,7 +1,7 @@
 <template>
   <!-- Este componente fue creado por Camilo Paternina y su equipo -->
-  <div>
-    <table class="table p-4 shadow col-12">
+  <div class="p-2 shadow">
+    <table class="table col-12">
       <thead>
         <tr>
           <th scope="col">Operaciones</th>
@@ -52,7 +52,7 @@
           <td>{{ diciembre[1] }}</td>
         </tr>
 
-        <tr>
+        <tr style="border: 1px solid transparent;">
           <th>Transf internas</th>
           <td>{{ enero[2] }}</td>
           <td>{{ febrero[2] }}</td>
@@ -98,43 +98,42 @@ export default {
         /** Verifica en que mes se registró el usuario */
         (result.data).forEach((user) => {
           const registroUsuario = new Date(user.creationDate)
-
           switch (registroUsuario.getMonth()+1) {
             case 1:
-              this.enero.push(this.enero[0] + 1)
+              this.enero[0] = (this.enero[0] + 1)
               break
             case 2:
-              this.enero.push(this.febrero[0] + 1)
+              this.febrero[0] = (this.febrero[0] + 1)
               break
             case 3:
-              this.enero.push(this.marzo[0] + 1)
+              this.marzo[0] = (this.marzo[0] + 1)
               break
             case 4:
-              this.enero.push(this.abril[0] + 1)
+              this.abril[0] = (this.abril[0] + 1)
               break
             case 5:
-              this.enero.push(this.mayo[0] + 1)
+              this.mayo[0] = (this.mayo[0] + 1)
               break
             case 6:
-              this.enero.push(this.junio[0] + 1)
+              this.junio[0] = (this.junio[0] + 1)
               break
             case 7:
-              this.enero.push(this.julio[0] + 1)
+              this.julio[0] = (this.julio[0] + 1)
               break
             case 8:
-              this.enero.push(this.agosto[0] + 1)
+              this.agosto[0] = (this.agosto[0] + 1)
               break
             case 9:
-              this.enero.push(this.septiembre[0] + 1)
+              this.septiembre[0] = (this.septiembre[0] + 1)
               break
             case 10:
-              this.enero.push(this.octubre[0] + 1)
+              this.octubre[0] = (this.octubre[0] + 1)
               break
             case 11:
-              this.enero.push(this.noviembre[0] + 1)
+              this.noviembre[0] = (this.noviembre[0] + 1)
               break
             case 12:
-              this.enero.push(this.diciembre[0] + 1)
+              this.diciembre[0] = (this.diciembre[0] + 1)
               break
           }
         })
@@ -143,42 +142,42 @@ export default {
       /** Obtiene el mes el que se realizarón cada una de las transferencias externas */
       await axios.get(apiTransExternas).then((result) =>{
         (result.data).forEach((transExternas) =>{
-            switch (transExternas.getMonth()+1) {
-            case 1:
-              this.enero.push(this.enero[1] + 1)
+            switch (new Date(transExternas.date).getMonth()+1) {
+              case 1:
+              this.enero[1] = (this.enero[1] + 1)
               break
             case 2:
-              this.enero.push(this.febrero[1] + 1)
+              this.febrero[1] = (this.febrero[1] + 1)
               break
             case 3:
-              this.enero.push(this.marzo[1] + 1)
+              this.marzo[1] = (this.marzo[1] + 1)
               break
             case 4:
-              this.enero.push(this.abril[1] + 1)
+              this.abril[1] = (this.abril[1] + 1)
               break
             case 5:
-              this.enero.push(this.mayo[1] + 1)
+              this.mayo[1] = (this.mayo[1] + 1)
               break
             case 6:
-              this.enero.push(this.junio[1] + 1)
+              this.junio[1] = (this.junio[1] + 1)
               break
             case 7:
-              this.enero.push(this.julio[1] + 1)
+              this.julio[1] = (this.julio[1] + 1)
               break
             case 8:
-              this.enero.push(this.agosto[1] + 1)
+              this.agosto[1] = (this.agosto[1] + 1)
               break
             case 9:
-              this.enero.push(this.septiembre[1] + 1)
+              this.septiembre[1] = (this.septiembre[1] + 1)
               break
             case 10:
-              this.enero.push(this.octubre[1] + 1)
+              this.octubre[1] = (this.octubre[1] + 1)
               break
             case 11:
-              this.enero.push(this.noviembre[1] + 1)
+              this.noviembre[1] = (this.noviembre[1] + 1)
               break
             case 12:
-              this.enero.push(this.diciembre[1] + 1)
+              this.diciembre[1] = (this.diciembre[1] + 1)
               break
           }
         })
@@ -187,42 +186,42 @@ export default {
       /** Obtiene el mes el que se realizarón cada una de las transferencias internas */
       await axios.get(apiTransfInternas).then((result) =>{
         (result.data).forEach((transInternas) =>{
-            switch (transInternas.getMonth()+1) {
-            case 1:
-              this.enero.push(this.enero[2] + 1)
-              brea1
+            switch (new Date(transInternas.date).getMonth()+1) {
+              case 1:
+              this.enero[2] = (this.enero[2] + 1)
+              break
             case 2:
-              this.enero.push(this.febrero[2] + 1)
+              this.febrero[2] = (this.febrero[2] + 1)
               break
             case 3:
-              this.enero.push(this.marzo[2] + 1)
+              this.marzo[2] = (this.marzo[2] + 1)
               break
             case 4:
-              this.enero.push(this.abril[2] + 1)
+              this.abril[2] = (this.abril[2] + 1)
               break
             case 5:
-              this.enero.push(this.mayo[2] + 1)
+              this.mayo[2] = (this.mayo[2] + 1)
               break
             case 6:
-              this.enero.push(this.junio[2] + 1)
+              this.junio[2] = (this.junio[2] + 1)
               break
             case 7:
-              this.enero.push(this.julio[2] + 1)
+              this.julio[2] = (this.julio[2] + 1)
               break
             case 8:
-              this.enero.push(this.agosto[2] + 1)
+              this.agosto[2] = (this.agosto[2] + 1)
               break
             case 9:
-              this.enero.push(this.septiembre[2] + 1)
+              this.septiembre[2] = (this.septiembre[2] + 1)
               break
             case 10:
-              this.enero.push(this.octubre[2] + 1)
+              this.octubre[2] = (this.octubre[2] + 1)
               break
             case 11:
-              this.enero.push(this.noviembre[2] + 1)
+              this.noviembre[2] = (this.noviembre[2] + 1)
               break
             case 12:
-              this.enero.push(this.diciembre[2] + 1)
+              this.diciembre[2] = (this.diciembre[2] + 1)
               break
           }
         })
@@ -271,7 +270,7 @@ export default {
     this.noviembre[2] = 0;
     this.diciembre[2] = 0;
 
-    this.createTable()
+    this.createTable("http://localhost:8000/todos/usuarios", "http://localhost:8000/todos/transferencias/externas" ,"http://localhost:8000/todos/transferencias/internas" )
   }
 }
 </script>

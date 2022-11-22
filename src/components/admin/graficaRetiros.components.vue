@@ -1,8 +1,9 @@
 <template>
-  <div class="hello">
+  <div class="grafica">
     <canvas id="myChart2" width="200" height="200"></canvas>
   </div>
 </template> 
+
 <script>
 import axios from 'axios'
 import Chart from 'chart.js/auto'
@@ -39,7 +40,6 @@ export default {
       this.apiInternalTransfer
     ) // llamamos a la funcion que hace las peticiones
 
-    console.log('mounted')
     this.getGrafica()
   },
   methods: {
@@ -91,7 +91,6 @@ export default {
           console.log('error', error)
         })
       await axios.get(apiCredit).then((result) => {
-        console.log(result.data[0]) // llamamos a la api de los credit
         result.data.forEach((element) => {
           const dateRegister = new Date(element.requestDate) // obtenemos la fecha de registro en la respuesta de la api
           if (dateRegister.getMonth() == 0) {
@@ -245,6 +244,11 @@ export default {
 </script>
   
 <style scoped>
+.grafica{
+  height: 400px;
+  width: 400px;
+}
+
 h3 {
   margin: 40px 0 0;
 }

@@ -1,15 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 import PathNotFound from '../views/PathNotFound.vue'
 import Logout from '../views/customer/Logout.vue'
+import { ExternalTransactionView } from '../views/external-transaction'
+import ConsolidadoComponent from "../views/customer/consolidado.views.vue"
 import { CustomerDashboardView } from '../views/customer'
 import { DetailExternalTransactionView, ExternalTransactionView } from '../views/external-transaction'
 import { ListExternalTransactionView } from '../views/external-transaction'
-import HomeView from '../views/HomeView.vue'
 import { AuthView, RegisterView } from '../auth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path:'/consolidado',
+      name:'ConsolidadoComponent',
+      component: ConsolidadoComponent
+    },
     {
       path: '/',
       name: 'home',

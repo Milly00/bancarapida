@@ -35,10 +35,15 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Operaciones</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/consolidado">Cosolidado</a>
+          </li>
+
           <li class="nav-item ">
             <a class="nav-link" href="/list-external-transaction">
               Transacciones Externa
             </a>
+
           </li>
         </ul>
       </div>

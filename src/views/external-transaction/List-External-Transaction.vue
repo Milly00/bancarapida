@@ -63,6 +63,7 @@
 </template>
 -->
 
+
 <script>
 import { GeneralView } from '@/components/customer'
 import { Navbar } from '../../components/ui/'
@@ -70,7 +71,6 @@ import { Navbar } from '../../components/ui/'
 import { StatusBadge, Table, TableItem, TableItemCell } from '@/components/ui'
 import axios from 'axios'
 //import { RouterLink } from 'vue-router'
-
 export default {
   components: {
     GeneralView,
@@ -129,6 +129,7 @@ export default {
               minute: 'numeric',
             }).format(movement.date)
           }}</TableItemCell> -->
+
           <TableItemCell>{{ movement.date }}</TableItemCell>
           <TableItemCell>{{ movement.bankName }}</TableItemCell>
           <TableItemCell

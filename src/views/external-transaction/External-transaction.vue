@@ -13,6 +13,7 @@ import { Button } from '../../components/ui/'
       <div class="row w-auto mt-2">
         <form @submit.prevent="sendForm()">
           <div class="form-floating mt-4">
+
             <input
               type="text"
               v-model="formData.nombre"
@@ -105,6 +106,7 @@ import { Button } from '../../components/ui/'
           <div class="form-floating mt-4">
             <input
               type="number"
+
               v-model="formData.numCuenta"
               class="block w-full form-control p-2 rounded bg-slate-200 border-slate-300 focus:outline-none focus:ring focus:border-blue-500"
               id="floatingInput"
@@ -113,6 +115,7 @@ import { Button } from '../../components/ui/'
             />
           </div>
           <label class="text-sm font-sans" for="floatingInput"
+
             >Nro. de cuenta</label
           >
           <span
@@ -184,7 +187,6 @@ export default {
         this.dataValida = true
         return false
       }
-
       let body = {
         ea_number: this.formData.numCuenta,
         transaction_type: 'Transaccion Externa',
