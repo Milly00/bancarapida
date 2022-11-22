@@ -69,7 +69,7 @@ import { Navbar } from '../../components/ui/'
 
 import { StatusBadge, Table, TableItem, TableItemCell } from '@/components/ui'
 import axios from 'axios'
-import { RouterLink } from 'vue-router'
+//import { RouterLink } from 'vue-router'
 
 export default {
   components: {
@@ -106,13 +106,17 @@ export default {
 
   <div class="w-full">
     <section class="container mx-auto py-3 space-y-4">
-      <button class="outline outline-offset-2 outline-cyan-500 rounded-sm p-2">
-        <RouterLink to="/external-transaction">Generar transacción</RouterLink>
+      <button class="bg-blue-900 no-underline rounded-sm p-3 hover:bg-sky-700">
+        <RouterLink class="no-underline text-white" to="/external-transaction"
+          >Generar transacción</RouterLink
+        >
       </button>
     </section>
     <section class="container mx-auto py-12 space-y-4">
       <h2 class="text-gray-900 font-bold text-2xl">Últimas transacciones</h2>
-      <Table :headings="['ID', 'Tipo', 'Fecha', 'Banco', 'Cantidad', 'Estado','-']">
+      <Table
+        :headings="['ID', 'Tipo', 'Fecha', 'Banco', 'Cantidad', 'Estado', '-']"
+      >
         <TableItem v-for="movement in transacciones" :key="movement.id">
           <TableItemCell>{{ movement.id }}</TableItemCell>
           <TableItemCell>{{ movement.transactioType }}</TableItemCell>
@@ -135,7 +139,17 @@ export default {
           <TableItemCell>
             <StatusBadge :status="movement.status" />
           </TableItemCell>
-         
+          <TableItemCell>
+            <button class="rounded-sm p-2">
+              <RouterLink
+                :to="{
+                  path: `/detail-external-transaction/${movement.id}`,
+                  params: { id: movement.id },
+                }"
+                >Ver más</RouterLink
+              >
+            </button>
+          </TableItemCell>
         </TableItem>
       </Table>
     </section>

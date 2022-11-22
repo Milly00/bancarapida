@@ -28,7 +28,7 @@ const router = createRouter({
       component: ListExternalTransactionView,
     },
     {
-      path: '/detail-external-transaction',
+      path: '/detail-external-transaction/:id',
       name: 'detail-external-transaction',
       component: DetailExternalTransactionView,
     },
