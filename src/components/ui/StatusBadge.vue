@@ -8,6 +8,8 @@ const props = defineProps({
 const variant = {
   Aprobada: 'green',
   Rechazada: 'red',
+  aprove: 'green',
+  refused: 'red'
 }
 </script>
 

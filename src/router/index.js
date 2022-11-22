@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { CustomerDashboardView } from '../views/customer'
 import HomeView from '../views/HomeView.vue'
 import PathNotFound from '../views/PathNotFound.vue'
 import Logout from '../views/customer/Logout.vue'
 import { ExternalTransactionView } from '../views/external-transaction'
-import { ListExternalTransactionView } from '../views/external-transaction'
-import { AuthView, RegisterView  } from '../auth'
 import ConsolidadoComponent from "../views/customer/consolidado.views.vue"
+import { CustomerDashboardView } from '../views/customer'
+import { DetailExternalTransactionView, ExternalTransactionView } from '../views/external-transaction'
+import { ListExternalTransactionView } from '../views/external-transaction'
+import { AuthView, RegisterView } from '../auth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,7 +20,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: CustomerDashboardView,
     },
     {
       path: '/customer',
@@ -35,6 +36,11 @@ const router = createRouter({
       path: '/list-external-transaction',
       name: 'list-external-transaction',
       component: ListExternalTransactionView,
+    },
+    {
+      path: '/detail-external-transaction/:id',
+      name: 'detail-external-transaction',
+      component: DetailExternalTransactionView,
     },
     {
       path: '/auth/login',

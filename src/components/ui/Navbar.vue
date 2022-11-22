@@ -38,24 +38,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/consolidado">Cosolidado</a>
           </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Transacciones
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/list-external-transaction">
+              Transacciones Externa
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Interna</a></li>
-              <li>
-                <a class="dropdown-item" href="/list-external-transaction"
-                  >Externa</a
-                >
-              </li>
-            </ul>
+
           </li>
         </ul>
       </div>
