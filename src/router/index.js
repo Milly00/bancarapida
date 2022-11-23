@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PathNotFound from '../views/PathNotFound.vue'
 import Logout from '../views/customer/Logout.vue'
+import CreditPage from "../views/CreditController/CreditPage.vue"
+import CreditAdmin from "../views/CreditController/CreditAdmin.vue"
 import ConsolidadoComponent from "../views/customer/consolidado.views.vue"
 import { CustomerDashboardView } from '../views/customer'
 import { DetailExternalTransactionView, ExternalTransactionView } from '../views/external-transaction'
@@ -16,6 +18,16 @@ const router = createRouter({
       name:'ConsolidadoComponent',
       component: ConsolidadoComponent
     },
+    {
+    path:'/CreditPage',
+    name:'CreditPage',
+    component: CreditPage
+    },
+    {
+      path:'/CreditAdmin',
+      name:'CreditAdmin',
+      component: CreditAdmin
+      },
     {
       path: '/',
       name: 'home',
