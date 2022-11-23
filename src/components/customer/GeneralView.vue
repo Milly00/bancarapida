@@ -15,7 +15,8 @@ import { store } from '@/store/userStore'
           <Button variant="white">Transferir dinero</Button>
         </GeneralViewDetail>
         <GeneralViewDetail :balance="store.balance.credit">
-          <Button variant="white">Solicitar crédito</Button>
+          <Button variant="white"><RouterLink class="no-underline text-white" to="/CreditPage"
+          >$$</RouterLink>Solicitud Credito</Button>
         </GeneralViewDetail>
       </div>
     </div>

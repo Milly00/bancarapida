@@ -45,9 +45,16 @@
             </a>
 
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/CreditAdmin">
+              Administracion de credito
+            </a>
+
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <nav class="w-full"></nav>
 </template>
+
